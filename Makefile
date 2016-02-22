@@ -4,7 +4,7 @@ SOURCES=$(wildcard app/* package.json LICENSE)
 
 dist: package
 	rm -f "dist/$(PRODUCT_NAME)-mac.zip"
-	cd "target/$(PRODUCT_NAME)-darwin-x64" && zip -r "../../dist/$(PRODUCT_NAME)-mac.zip" "$(PRODUCT_NAME).app"
+	cd "target/$(PRODUCT_NAME)-darwin-x64" && zip -r --symlinks "../../dist/$(PRODUCT_NAME)-mac.zip" "$(PRODUCT_NAME).app"
 
 install-mac: package
 	cp -r "target/$(PRODUCT_NAME)-darwin-x64/$(PRODUCT_NAME).app" /Applications
