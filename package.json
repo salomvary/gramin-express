@@ -1,0 +1,31 @@
+{
+  "name": "gramin-express",
+  "productName": "Gramin Express",
+  "description": "Sync Strava activities from any Garmin device",
+  "homepage": "http://salomvary.github.io/gramin-express",
+  "author": {
+    "name": "Márton Salomváry",
+    "email": "salomvary@gmail.com"
+  },
+  "private": true,
+  "version": "0.0.1",
+  "main": "main.js",
+  "engines": {
+    "electron": "^0.36.8"
+  },
+  "engineStrict": true,
+  "scripts": {
+    "eslint": "eslint",
+    "start": "electron .",
+    "electron-packager": "electron-packager"
+  },
+  "dependencies": {
+    "request": "^2.69.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.8",
+    "electron-packager": "^5.2.1",
+    "eslint": "^2.2.0",
+    "svg2png": "^1.0.0"
+  }
+}

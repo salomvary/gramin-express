@@ -1,0 +1,22 @@
+<svg width="256" height="256" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="svg_6" x2="1" y2="1" spreadMethod="pad" x1="0.522705" y1="0.019531">
+   <stop stop-color="#f28516" offset="0"/>
+   <stop stop-color="#ffd89f" stop-opacity="0.996094" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="258" width="258" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_4">
+   <g stroke="null" id="svg_1" transform="rotate(-180 128,127.99997711181639) ">
+    <g stroke="null" id="svg_2" transform="matrix(-1.1440953879201743,0,0,-1.1440953879201743,244.5719076042899,268.96404307363395) ">
+     <path stroke="#633002" d="m171.288468,158.506953q0,28.5468 -20.3906,48.6562q-20.3906,20.1094 -49.0782,20.1094q-28.5468,0 -48.9374,-20.1094q-20.3907,-20.1094 -20.3907,-48.6562q0,-25.7344 22.9219,-51.1875l5.0625,-5.625q17.7187,-19.6875 26.7187,-38.25q8.2969,-16.875 14.625,-44.2969q6.4688,27.4219 14.7657,44.2969q9.1406,18.7031 26.7187,38.25l5.0625,5.625q22.9219,25.4531 22.9219,51.1875z" id="svg_3" fill="url(#svg_6)" stroke-width="8" transform="rotate(-180 101.89002227783205,123.21005249023438) "/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>
