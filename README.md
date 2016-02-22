@@ -19,7 +19,7 @@ If you want something that simply works with your device, Gramin Express for the
 - Click "Upload"
 - Profit
 
-![Gramin Express screenshot](screenshot.png)
+![Gramin Express screenshot](https://raw.githubusercontent.com/salomvary/gramin-express/master/screenshot.png)
 
 ## Download
 
