@@ -10,7 +10,6 @@ install-mac: package
 	cp -r "target/$(PRODUCT_NAME)-darwin-x64/$(PRODUCT_NAME).app" /Applications
 
 package: target/gramin-express.icns target/app/node_modules Credits.rtf
-	echo "$@"
 	npm run electron-packager -- \
 		target/app \
 		"$(PRODUCT_NAME)" \
