@@ -1,6 +1,5 @@
 PRODUCT_NAME=$(shell node -e "console.log(require('./package.json').productName)")
 VERSION=$(shell node -e "console.log(require('./package.json').version)")
-SOURCES=$(wildcard app/* package.json LICENSE)
 
 dist: package
 	rm -f "dist/$(PRODUCT_NAME)-mac.zip"
@@ -28,9 +27,9 @@ target/app/node_modules: target/app
 	cd target/app && npm install --production
 	touch $@
 
-target/app: $(SOURCES)
+target/app: $(wildcard app/* package.json LICENSE)
 	mkdir -p $@
-	cp $(SOURCES) $@
+	cp -r app package.json LICENSE $@
 
 target/gramin-express.icns: target/gramin-express.iconset
 	iconutil -c icns -o $@ target/gramin-express.iconset
