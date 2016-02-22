@@ -9,7 +9,7 @@
   },
   "private": true,
   "version": "0.0.1",
-  "main": "main.js",
+  "main": "app/main.js",
   "engines": {
     "electron": "^0.36.8"
   },

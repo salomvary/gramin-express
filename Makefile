@@ -1,6 +1,6 @@
 PRODUCT_NAME=$(shell node -e "console.log(require('./package.json').productName)")
 VERSION=$(shell node -e "console.log(require('./package.json').version)")
-SOURCES=$(wildcard *.js *.html *.css package.json LICENSE)
+SOURCES=$(wildcard app/* package.json LICENSE)
 
 dist: package
 	rm -f "dist/$(PRODUCT_NAME)-mac.zip"
