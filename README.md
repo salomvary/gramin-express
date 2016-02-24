@@ -1,7 +1,7 @@
 ## Why should you care about Gramin Express?
 
 So you have a shiny Garmin device and you like sharing your rides, runs or any
-other activities on [Strava](strava.com). You might run into the following
+other activities on [Strava](http://strava.com). You might run into the following
 problems:
 
 - You don't like [Garmin Express](http://software.garmin.com/en-US/express.html)
