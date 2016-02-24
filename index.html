@@ -2,31 +2,32 @@
 ---
 <!doctype html>
 <html>
-	<head>
+  <head>
     <meta charset='utf-8'>
-		<title>Gramin Express</title>
-	</head>
-	<body>
-		<header>
-			<h1>Gramin Express</h1>
-			Sync Strava activities from any Garmin device
-		</header>
-		<section>
-			{% capture readme %}{% include_relative README.md %}{% endcapture %}
-			{{ readme | markdownify }}
-		</section>
-		<footer>
-			Gramin Express is maintained by <a href="https://github.com/salomvary">Márton Salomváry</a><br>
-		</footer>
-		<script type="text/javascript">
-			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-		<script type="text/javascript">
-			try {
-				var pageTracker = _gat._getTracker("UA-26943877-6");
-				pageTracker._trackPageview();
-			} catch(err) {}
-		</script>
-	</body>
+    <title>Gramin Express</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <header>
+      <h1>Gramin Express</h1>
+      <h2>Sync Strava activities from any Garmin device</h2>
+    </header>
+    <section role="main">
+      {% capture readme %}{% include_relative README.md %}{% endcapture %}
+      {{ readme | markdownify }}
+    </section>
+    <footer>
+      Gramin Express is maintained by <a href="https://github.com/salomvary">Márton Salomváry</a><br>
+    </footer>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-26943877-6");
+        pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
 </html>
