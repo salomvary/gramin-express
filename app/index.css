@@ -1,78 +1,78 @@
 html {
-	/* disable OSX overscroll */
-	overflow: hidden;
-	height: 100%;
+  /* disable OSX overscroll */
+  overflow: hidden;
+  height: 100%;
 }
 
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	margin: 0;
-	font-size: 14px;
-	/* disable OSX overscroll */
-	height: 100%;
-	overflow: auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-size: 14px;
+  /* disable OSX overscroll */
+  height: 100%;
+  overflow: auto;
 }
 
 .navbar {
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 50px;
-	line-height: 50px;
-	border-bottom: 1px solid #e5e5e5;
-	padding: 0 20px;
-	background: #fff;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0 20px;
+  background: #fff;
 }
 
 .content {
-	padding-top: 50px;
+  padding-top: 50px;
 }
 
 .navbar-title {
-	margin: 0;
-	font-size: 30px;
-	font-weight: 300;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 300;
 }
 
 .navbar-user {
-	padding-right: 20px;
-	position: absolute;
-	right: 0;
-	top: 0;
+  padding-right: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .navbar-user.logged-out {
-	display: none;
+  display: none;
 }
 
 table {
-	width: 100%;
+  width: 100%;
 }
 
 td {
-	padding: 14px 20px;
-	height: 34px;
+  padding: 14px 20px;
+  height: 34px;
 }
 
 tr:nth-child(even) {
-	 background-color: #f1f1f1;
+   background-color: #f1f1f1;
 }
 
 td.actions {
-	text-align: right;
-	width: 110px;
+  text-align: right;
+  width: 110px;
 }
 
 .track-error {
-	display: block;
-	color: #b60000;
+  display: block;
+  color: #b60000;
 }
 
 a {
-	color: #007fb6;
-	text-decoration: none;
+  color: #007fb6;
+  text-decoration: none;
 }
 
 button {
@@ -91,44 +91,44 @@ button {
 }
 
 button:hover {
-	background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 button:active {
-	background-color: #e5e5e5;
+  background-color: #e5e5e5;
 }
 
 button:focus {
-	outline: thin dotted;
+  outline: thin dotted;
 }
 
 button[disabled] {
-	color: #ccc;
-	border: 1px solid #e5e5e5;
+  color: #ccc;
+  border: 1px solid #e5e5e5;
 }
 
 .messages {
-	display: table;
-	position: fixed;
-	z-index: -1;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
+  display: table;
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .message {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 25px;
-	color: #999;
-	font-weight: 100;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 25px;
+  color: #999;
+  font-weight: 100;
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
 
