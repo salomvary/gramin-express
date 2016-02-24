@@ -21,11 +21,20 @@ If you want something that simply works with your device, Gramin Express for the
 
 ![Gramin Express screenshot](https://raw.githubusercontent.com/salomvary/gramin-express/master/screenshot.png)
 
-## Download
+## Download and install
 
-At the moment the only supported platform is Mac OSX. If you are interested in Windows or Linux support [buy me beers](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8A6RB264GKBBE).
+At the moment the only supported platform is Mac OS X. If you are interested in Windows or Linux support [buy me beers](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8A6RB264GKBBE).
 
-- [Download for Mac OSX](https://github.com/salomvary/gramin-express/blob/master/dist/Gramin%20Express-mac.zip?raw=true)
+### Mac OS X
+
+- [Download Gramin Express for Mac OS X](https://github.com/salomvary/gramin-express/blob/master/dist/Gramin%20Express-mac.zip?raw=true)
+- Extract the zip file (eg. double click in Finder)
+- Move Gramin Express to /Applications (optional)
+- Right click (or control-click) on Gramin Express
+- Click Open
+- Click Open when prompted **“Gramin Express” is from an unidentified developer. Are you sure you want to open it?**
+
+The last three steps are only necessary when running Gramin Express the first time.
 
 ## Disclaimer
 
