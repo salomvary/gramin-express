@@ -3,3 +3,7 @@ update-readme:
 
 run:
 	jekyll serve --watch
+
+update-and-push:
+	git commit -am 'Update site'
+	git push
