@@ -5,18 +5,17 @@ const path = require('path')
 const shell = require('electron').shell
 
 module.exports = class TrackList extends Events {
-  constructor(strava, garmin, tracks) {
+  constructor(strava, garmin, storage) {
     super()
     this.strava = strava
     this.garmin = garmin
-    this.tracks = tracks
+    this.storage = storage
     this.template = document.getElementById('track-template').content
     this.trackList = document.getElementById('tracks')
     this.noTracks = document.getElementById('no-tracks')
     this.noDevice = document.getElementById('no-device')
-    this.unStuckTracks()
     garmin.on('update', () => this.render())
-    this.on('change', () => this.render())
+    storage.on('change', () => this.render())
   }
 
   onUploadClick(trackPath) {
@@ -24,7 +23,7 @@ module.exports = class TrackList extends Events {
   }
 
   uploadTrack(trackPath) {
-    this.updateTrack(trackPath, {
+    this.storage.updateTrack(trackPath, {
       status: 'uploading',
       error: null,
       activityId: null
@@ -37,7 +36,7 @@ module.exports = class TrackList extends Events {
   }
 
   onUploadSucces(trackPath, status) {
-    this.updateTrack(trackPath, {
+    this.storage.updateTrack(trackPath, {
       status: 'success',
       error: null,
       activityId: status.activity_id
@@ -45,35 +44,11 @@ module.exports = class TrackList extends Events {
   }
 
   onUploadFail(trackPath, status) {
-    this.updateTrack(trackPath, {
+    this.storage.updateTrack(trackPath, {
       status: 'fail',
       error: status.error,
       activityId: null
     })
-  }
-
-  updateTrack(trackPath, attributes) {
-    const track = this.getTrack(trackPath)
-    Object.assign(track, attributes)
-    this.emit('change', this.tracks)
-  }
-
-  getTrack(trackPath) {
-    const trackId = path.basename(trackPath)
-    return this.tracks[trackId] || (this.tracks[trackId] = {})
-  }
-
-  unStuckTracks() {
-    var anyChange = false
-    Object.keys(this.tracks).forEach(trackPath => {
-      const track = this.tracks[trackPath]
-      if (track.status == 'uploading') {
-        track.status = null
-        anyChange = true
-      }
-    })
-    if (anyChange)
-      this.emit('change', this.tracks)
   }
 
   render() {
@@ -93,7 +68,7 @@ module.exports = class TrackList extends Events {
 
   renderTrack(trackPath) {
     const element = document.importNode(this.template, true)
-    const track = this.getTrack(trackPath)
+    const track = this.storage.getTrack(trackPath)
     const button = element.querySelector('.track-upload-button')
     const link = element.querySelector('.track-activity-link')
     link.onclick = openExternal

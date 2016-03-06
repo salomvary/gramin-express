@@ -13,7 +13,7 @@ const clientSecret = config.clientSecret
 const storage = new Storage()
 const strava = new Strava(clientId, clientSecret, storage.getAuth())
 const garmin = new Garmin()
-const trackList = new TrackList(strava, garmin, storage.getTracks())
+const trackList = new TrackList(strava, garmin, storage)
 const login = new Login(strava)
 
 trackList.render()
@@ -23,6 +23,3 @@ garmin.startWatching()
 strava
   .on('login', auth => storage.setAuth(auth))
   .on('logout', () => storage.deleteAuth())
-
-trackList
-  .on('change', tracks => storage.updateTracks(tracks))
