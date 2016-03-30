@@ -2,6 +2,7 @@ html {
   /* disable OSX overscroll */
   overflow: hidden;
   height: 100%;
+  -webkit-user-select: none;
 }
 
 body {
