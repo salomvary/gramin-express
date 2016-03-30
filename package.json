@@ -16,7 +16,7 @@
   "engineStrict": true,
   "scripts": {
     "eslint": "eslint",
-    "start": "electron .",
+    "start": "GRAMIN_PROFILE=development electron .",
     "electron-packager": "electron-packager"
   },
   "dependencies": {

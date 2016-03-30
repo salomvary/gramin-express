@@ -8,6 +8,10 @@ const Menu = electron.Menu
 
 var mainWindow = null
 
+const profile = process.env.GRAMIN_PROFILE
+if (profile)
+  app.setPath('userData', app.getPath('userData') + ' ' + profile)
+
 app.on('window-all-closed', function() {
   app.quit()
 })
