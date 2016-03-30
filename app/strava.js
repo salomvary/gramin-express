@@ -13,9 +13,9 @@ module.exports = class Strava extends Events {
     this.auth = auth
   }
 
-  uploadTrack(path) {
+  uploadTrack(track) {
     return this.login()
-      .then(auth => Promise.all([auth, sendFile(auth.access_token, path)]))
+      .then(auth => Promise.all([auth, sendFile(auth.access_token, track)]))
       .then(results => {
         const auth = results[0]
         const status = results[1]
@@ -152,8 +152,11 @@ class Authorizer {
 function req(options) {
   return new Promise((resolve, reject) => {
     request(options, (error, response, body) => {
+      // TODO handle JSON parse exception
       const json = body && JSON.parse(body)
-      if (!error && response.statusCode >= 200 && response.statusCode < 300)
+      const isSuccess = response && response.statusCode >= 200 && response.statusCode < 300
+      logReq(options, isSuccess, response, json || error)
+      if (!error && isSuccess)
         resolve(json)
       else
         reject(json || error || response.statusCode)
@@ -161,17 +164,25 @@ function req(options) {
   })
 }
 
-function sendFile(accessToken, file) {
+function logReq(options, isSuccess, response, result) {
+  const level = isSuccess ? 'log' : 'error'
+  const summary = `${options.method || 'GET'} ${options.url} ${response && response.statusCode} body: %o`
+  console[level](summary, result)
+}
+
+function sendFile(accessToken, track) {
+  const formData = {
+    data_type: 'gpx',
+    file: fs.createReadStream(track.path)
+  }
+  if (track.name) formData.name = track.name
   return req({
     method: 'POST',
     url: 'https://www.strava.com/api/v3/uploads',
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
-    formData: {
-      data_type: 'gpx',
-      file: fs.createReadStream(file)
-    }
+    formData: formData
   })
 }
 

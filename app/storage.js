@@ -58,6 +58,7 @@ module.exports = class Storage extends Events {
     const track = tracks[trackId] || (tracks[trackId] = {})
     Object.assign(track, attributes)
     this.updateTracks(tracks)
+    return track
   }
 
   unStuckTracks() {
