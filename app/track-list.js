@@ -17,7 +17,8 @@ module.exports = function TrackList(props) {
           key: track.path,
           track: track,
           onUploadClick: props.onUploadClick,
-          onNameChange: props.onNameChange
+          onNameChange: props.onNameChange,
+          onNameFocus: props.onNameFocus
         })
       )
     else

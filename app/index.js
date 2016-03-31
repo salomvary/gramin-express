@@ -33,14 +33,16 @@ class Index extends React.Component {
     return React.createElement(TrackList, {
       tracks: this.state.tracks,
       onUploadClick: this.props.onUploadClick,
-      onNameChange: this.props.onNameChange
+      onNameChange: this.props.onNameChange,
+      onNameFocus: this.props.onNameFocus
     })
   }
 }
 
 const index = ReactDOM.render(React.createElement(Index, {
   onUploadClick: uploadTrack,
-  onNameChange: onNameChange
+  onNameChange: onNameChange,
+  onNameFocus: onNameFocus
 }), document.querySelector('.content'))
 
 strava
@@ -65,6 +67,12 @@ function uploadTrack(trackPath) {
 function onNameChange(trackPath, name) {
   storage.updateTrack(trackPath, {
     name: name
+  })
+}
+
+function onNameFocus(trackPath) {
+  storage.updateTrack(trackPath, {
+    error: null
   })
 }
 

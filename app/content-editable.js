@@ -37,6 +37,7 @@ module.exports = class ContentEditable extends React.Component {
   onFocus({target: {textContent}}) {
     this.initialValue = textContent
     setTimeout(() => document.execCommand('selectAll', false, null), 1)
+    this.props.onFocus()
   }
 
   onInput({target: {textContent}}) {

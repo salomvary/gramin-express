@@ -43,7 +43,8 @@ module.exports = class TrackListItem extends React.Component {
             value: this.state.name,
             readOnly: !isEditable,
             onChange: event => this.setState({name: event.target.value}),
-            onBlur: () => this.onNameBlur()
+            onBlur: () => this.onNameBlur(),
+            onFocus: () => this.onNameFocus()
           }),
           DOM.div({className: 'track-error'},
             track.error)),
@@ -53,6 +54,10 @@ module.exports = class TrackListItem extends React.Component {
         }, moment(track.birthtime).calendar()),
         DOM.td({className: 'actions'}, link, button))
     )
+  }
+
+  onNameFocus() {
+    this.props.onNameFocus(this.props.track.path)
   }
 
   onNameBlur() {
