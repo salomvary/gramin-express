@@ -1,5 +1,6 @@
 PRODUCT_NAME=$(shell node -e "console.log(require('./package.json').productName)")
 VERSION=$(shell node -e "console.log(require('./package.json').version)")
+ELECTRON_VERSION=$(shell npm --json list electron-prebuilt | node -e "console.log(JSON.parse(require('fs').readFileSync('/dev/stdin').toString()).dependencies['electron-prebuilt'].version)")
 
 dist: package
 	rm -f "dist/$(PRODUCT_NAME)-mac.zip"
@@ -14,7 +15,7 @@ package: target/gramin-express.icns target/app/node_modules Credits.rtf
 		"$(PRODUCT_NAME)" \
 		--platform=darwin \
 		--arch=x64 \
-		--version=0.36.8 \
+		--version=$(ELECTRON_VERSION) \
 		--app-version=$(VERSION) \
 		--icon target/gramin-express.icns \
 		--app-copyright="$(shell head -n 1 LICENSE)" \
