@@ -36,6 +36,10 @@ At the moment the only supported platform is Mac OS X. If you are interested in 
 
 The last three steps are only necessary when running Gramin Express the first time.
 
+## Source code
+
+Gramin Express is an open source project. [Fork it on GitHub](https://github.com/salomvary/gramin-express).
+
 ## Disclaimer
 
 Use at your own risk. It might destroy the Earth. Or better don't use
