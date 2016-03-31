@@ -152,3 +152,13 @@ button[disabled] {
   margin: -0.5em;
   line-height: 1.5;
 }
+
+[contenteditable]:after {
+  content: 'edit';
+  padding-left: 1em;
+  color: #999;
+}
+
+[contenteditable]:focus:after {
+  display: none;
+}
