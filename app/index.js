@@ -102,7 +102,7 @@ function getTracks() {
       .map(deviceTrack => [deviceTrack, storage.getTrack(deviceTrack.path)])
       .map(([deviceTrack, storageTrack]) =>
          Object.assign({
-           defaultName: nameFromPath(storageTrack.path)
+           defaultName: nameFromPath(deviceTrack.path)
          }, deviceTrack, storageTrack)
       )
 }
