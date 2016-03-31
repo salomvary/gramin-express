@@ -66,12 +66,12 @@ tr:nth-child(even) {
 }
 
 .actions {
-  text-align: right;
   width: 110px;
 }
 
 .actions,
 .birthtime {
+  text-align: right;
   white-space: nowrap;
 }
 
