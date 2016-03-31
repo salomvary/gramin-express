@@ -85,3 +85,28 @@ button:focus {
   outline: thin dotted;
 }
 
+pre {
+	border: 1px solid #eee;
+	padding: 10px;
+	background: #fcfcfc;
+	border-radius: 2px;
+}
+
+.download-button {
+	display: none;
+}
+
+@media only screen and (min-width: 480px) {
+	.title-and-download {
+		position: relative;
+	}
+
+	.download-button {
+		display: inline-block;
+		margin: 0;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
