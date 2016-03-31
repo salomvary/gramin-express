@@ -2,7 +2,6 @@
 
 const ContentEditable = require('./content-editable')
 const React = require('react')
-const shell = require('electron').shell
 
 const DOM = React.DOM
 
@@ -25,7 +24,6 @@ module.exports = class TrackListItem extends React.Component {
       var link = DOM.a({
         className: 'track-activity-link',
         href: 'https://www.strava.com/activities/' + track.activityId,
-        onClick: openExternal,
         children: 'View on Strava'
       })
     else
@@ -57,9 +55,4 @@ module.exports = class TrackListItem extends React.Component {
     this.setState({name: name || this.props.track.defaultName})
     this.props.onNameChange(this.props.track.path, name)
   }
-}
-
-function openExternal(event) {
-  event.preventDefault()
-  shell.openExternal(event.target.href)
 }

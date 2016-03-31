@@ -7,6 +7,7 @@ const Login = require('./login')
 const Storage = require('./storage')
 const React = require('react')
 const ReactDOM = require('react-dom')
+const shell = require('electron').shell
 const Strava = require('./strava')
 const TrackList = require('./track-list')
 
@@ -100,3 +101,11 @@ function getTracks() {
 function nameFromPath(trackPath) {
   return basename(trackPath, extname(trackPath))
 }
+
+document.body.addEventListener('click', event => {
+  const a = event.target.closest('a')
+  if (a && !event.defaultPrevented) {
+    event.preventDefault()
+    shell.openExternal(a.href)
+  }
+}, false)
