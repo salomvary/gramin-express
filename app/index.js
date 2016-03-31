@@ -90,12 +90,13 @@ function renderTracks() {
 
 function getTracks() {
   if (garmin.tracks)
-    return garmin.tracks.map(trackPath => {
-      const track = Object.assign({}, storage.getTrack(trackPath))
-      track.path = trackPath
-      track.defaultName = nameFromPath(trackPath)
-      return track
-    })
+    return garmin.tracks
+      .map(deviceTrack => [deviceTrack, storage.getTrack(deviceTrack.path)])
+      .map(([deviceTrack, storageTrack]) =>
+         Object.assign({
+           defaultName: nameFromPath(storageTrack.path)
+         }, deviceTrack, storageTrack)
+      )
 }
 
 function nameFromPath(trackPath) {

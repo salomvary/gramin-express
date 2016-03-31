@@ -61,9 +61,18 @@ tr:nth-child(even) {
    background-color: #f1f1f1;
 }
 
-td.actions {
+.track-name-cell {
+  width: 100%;
+}
+
+.actions {
   text-align: right;
   width: 110px;
+}
+
+.actions,
+.birthtime {
+  white-space: nowrap;
 }
 
 .track-error {

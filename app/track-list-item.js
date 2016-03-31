@@ -1,6 +1,7 @@
 'use strict'
 
 const ContentEditable = require('./content-editable')
+const moment = require('moment')
 const React = require('react')
 
 const DOM = React.DOM
@@ -36,7 +37,7 @@ module.exports = class TrackListItem extends React.Component {
 
     return (
       DOM.tr(null,
-        DOM.td(null,
+        DOM.td({className: 'track-name-cell'},
           React.createElement(ContentEditable, {
             className: 'track-name',
             value: this.state.name,
@@ -46,6 +47,10 @@ module.exports = class TrackListItem extends React.Component {
           }),
           DOM.div({className: 'track-error'},
             track.error)),
+        DOM.td({
+          className: 'birthtime',
+          title: track.birthtime.toString()
+        }, moment(track.birthtime).calendar()),
         DOM.td({className: 'actions'}, link, button))
     )
   }

@@ -46,7 +46,7 @@ function findTracks(device) {
         .map((entry, i) => ({path: entry, stat: stat[i]}))
         .filter(entry => entry.stat.isFile())
         .sort((a, b) => b.stat.birthtime.getTime() - a.stat.birthtime.getTime())
-        .map(entry => entry.path)
+        .map(entry => ({path: entry.path, birthtime: entry.stat.birthtime}))
     })
 }
 
