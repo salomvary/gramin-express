@@ -7,6 +7,7 @@ dist: package
 	cd "target/$(PRODUCT_NAME)-darwin-x64" && zip -r --symlinks "../../dist/$(PRODUCT_NAME)-mac.zip" "$(PRODUCT_NAME).app"
 
 install-mac: package
+	rm -rf "/Applications/$(PRODUCT_NAME).app"
 	cp -r "target/$(PRODUCT_NAME)-darwin-x64/$(PRODUCT_NAME).app" /Applications
 
 package: target/gramin-express.icns target/app/node_modules Credits.rtf
