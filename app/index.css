@@ -153,7 +153,7 @@ button[disabled] {
   line-height: 1.5;
 }
 
-[contenteditable]:after {
+[contenteditable=true]:after {
   content: 'edit';
   padding-left: 1em;
   color: #999;
