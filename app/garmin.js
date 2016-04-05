@@ -4,7 +4,7 @@ const Events = require('events')
 const fs = require('fs')
 const path = require('path')
 
-const volumes = '/Volumes'
+const volumes = getVolumes()
 
 module.exports = class Garmin extends Events {
   startWatching() {
@@ -98,4 +98,11 @@ function sleep(time, fn) {
 function retryReaddir(path) {
   // For some reason permissions are not set up right after a device is connected
   return retry(() => readdir(path), 10, e => e.code == 'EACCES')
+}
+
+function getVolumes() {
+  if (process.platform == 'darwin')
+    return '/Volumes'
+  else
+    return '/media/' + process.env.USER
 }

@@ -23,7 +23,7 @@ If you want something that simply works with your device, Gramin Express for the
 
 ## Download and install
 
-At the moment the only supported platform is Mac OS X. If you are interested in Windows or Linux support [buy me beers](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8A6RB264GKBBE).
+If you are interested in Windows support [buy me beers](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8A6RB264GKBBE).
 
 ### Mac OS X
 
@@ -35,6 +35,14 @@ At the moment the only supported platform is Mac OS X. If you are interested in 
 - Click Open when prompted **“Gramin Express” is from an unidentified developer. Are you sure you want to open it?**
 
 The last three steps are only necessary when running Gramin Express the first time.
+
+### Linux
+
+Gramin Express is tested on Ubuntu 15.10. It might not work on other distributions.
+
+- [Download Gramin Express for Linux](https://github.com/salomvary/gramin-express/blob/master/dist/Gramin%20Express-linux.tar.gz?raw=true)
+- Extract the archive (eg. `tar xzvf "Gramin Express-linux.tar.gz"`)
+- The executable is `Gramin\ Express-linux-x64/Gramin\ Express`
 
 ## Source code
 

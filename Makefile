@@ -4,7 +4,9 @@ ELECTRON_VERSION=$(shell npm --json list electron-prebuilt | node -e "console.lo
 
 dist: package
 	rm -f "dist/$(PRODUCT_NAME)-mac.zip"
+	rm -f "dist/$(PRODUCT_NAME)-linux.zip"
 	cd "target/$(PRODUCT_NAME)-darwin-x64" && zip -r --symlinks "../../dist/$(PRODUCT_NAME)-mac.zip" "$(PRODUCT_NAME).app"
+	cd target && tar czvf "../dist/$(PRODUCT_NAME)-linux.tar.gz" "$(PRODUCT_NAME)-linux-x64"
 
 install-mac: package
 	rm -rf "/Applications/$(PRODUCT_NAME).app"
@@ -14,7 +16,7 @@ package: target/gramin-express.icns target/app/node_modules Credits.rtf
 	npm run electron-packager -- \
 		target/app \
 		"$(PRODUCT_NAME)" \
-		--platform=darwin \
+		--platform=darwin,linux \
 		--arch=x64 \
 		--version=$(ELECTRON_VERSION) \
 		--app-version=$(VERSION) \
