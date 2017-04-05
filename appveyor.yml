@@ -2,7 +2,7 @@
 environment:
   nodejs_version: "6"
   GH_TOKEN:
-    secure: zfW8jQ6thqoeSWQaH+XbDwBgdutprFYWXeA05a2bqVP4IFstx621jUoHwPEM1IiN
+    secure: vHHBO/deJb3qKL4jyXXGbt40d8lghvJ/WYwT4qgXKsQv6d6okaGvZYdMXVFlIHXH
 
 # Install scripts. (runs after repo cloning)
 install:
