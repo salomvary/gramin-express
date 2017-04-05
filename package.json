@@ -16,8 +16,19 @@
   "engineStrict": true,
   "scripts": {
     "eslint": "eslint",
+    "gulp": "gulp",
     "start": "NODE_ENV=development GRAMIN_PROFILE=development electron .",
-    "electron-packager": "electron-packager"
+    "pack": "build --dir",
+    "dist": "build",
+    "build": "build",
+    "prebuild": "gulp icons",
+    "postinstall": "install-app-deps"
+  },
+  "build": {
+    "appId": "com.gramin.express",
+    "extraResources": [
+      "Credits.rtf"
+    ]
   },
   "dependencies": {
     "moment": "^2.12.0",
@@ -26,9 +37,13 @@
     "request": "^2.69.0"
   },
   "devDependencies": {
-    "electron-packager": "^5.2.1",
+    "electron-builder": "^16.6.1",
     "electron-prebuilt": "^0.37.2",
     "eslint": "^2.2.0",
-    "svg2png": "^1.0.0"
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-svg2png": "^2.0.2",
+    "gulp-to-ico": "^1.0.0",
+    "merge-stream": "^1.0.1"
   }
 }
