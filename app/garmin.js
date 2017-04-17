@@ -60,7 +60,11 @@ function readdir(dir) {
   return new Promise((resolve, reject) => {
     fs.readdir(dir, (err, result) => {
       if (err)
-        reject(err)
+        if (err.code == 'EACCES')
+          // If we don't have permissions to access dir pretend it was empty
+          resolve([])
+        else
+          reject(err)
       else
         resolve(result.map(entry => path.join(dir, entry)))
     })
