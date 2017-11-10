@@ -13,8 +13,9 @@ module.exports = class Garmin extends Events {
   }
 
   update() {
-    findDevice()
-      .then(device => device && findTracks(device))
+    findDevices()
+      .then(devices => Promise.all(devices.map(findTracks)))
+      .then(deviceTracks => sortTracks(deviceTracks))
       .then(tracks => this.setTracks(tracks))
       .catch(error => console.error(error))
   }
@@ -25,13 +26,13 @@ module.exports = class Garmin extends Events {
   }
 }
 
-function findDevice() {
+function findDevices() {
   return readdir(volumes)
     .then(devices => Promise.all([devices, Promise.all(devices.map(isGarmin))]))
     .then(results => {
       const devices = results[0]
       const isGarmin = results[1]
-      return devices.find((device, i) => isGarmin[i])
+      return devices.filter((device, i) => isGarmin[i])
     })
 }
 
@@ -45,15 +46,27 @@ function findTracks(device) {
       return entries
         .map((entry, i) => ({path: entry, stat: stat[i]}))
         .filter(entry => entry.stat.isFile())
-        .sort((a, b) => b.stat.birthtime.getTime() - a.stat.birthtime.getTime())
         .map(entry => ({path: entry.path, birthtime: entry.stat.birthtime}))
     })
 }
 
+function sortTracks(deviceTracks) {
+  return deviceTracks
+    .reduce((a, b) => a.concat(b))
+    .sort((a, b) => b.birthtime.getTime() - a.birthtime.getTime())
+}
+
 function isGarmin(device) {
-  return stat(device)
-    .then(stat => stat.isDirectory() && retryReaddir(device))
-    .then(entries => entries && entries.some(entry => path.basename(entry) == 'Garmin'))
+  return containsChild(device, 'Garmin')
+    .then(isGarmin => {
+      return isGarmin && containsChild(path.join(device, 'Garmin'), 'GPX')
+    })
+}
+
+function containsChild(parent, child) {
+  return stat(parent)
+    .then(stat => stat.isDirectory() && retryReaddir(parent))
+    .then(entries => entries && entries.some(entry => path.basename(entry) == child))
 }
 
 function readdir(dir) {
