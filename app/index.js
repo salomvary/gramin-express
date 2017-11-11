@@ -3,10 +3,10 @@
 const { basename, extname } = require('path')
 const config = require('./config')
 const Garmin = require('./garmin')
-const Login = require('./login')
 const Storage = require('./storage')
 const React = require('react')
 const ReactDOM = require('react-dom')
+const Settings = require('./settings')
 const shell = require('electron').shell
 const Strava = require('./strava')
 const TrackList = require('./track-list')
@@ -17,25 +17,36 @@ const clientSecret = config.clientSecret
 const storage = new Storage()
 const strava = new Strava(clientId, clientSecret, storage.getAuth())
 const garmin = new Garmin()
-const login = new Login(strava)
 
-login.render()
 garmin.startWatching()
+
+strava
+  .on('login', auth => storage.setAuth(auth))
+  .on('logout', () => storage.deleteAuth())
 
 class Index extends React.Component {
   constructor(props) {
     super(props)
     this.props = props
-    this.state = {}
+    this.state = { settings: false }
+  }
+
+  toggleSettings() {
+    this.setState({settings: !this.state.settings})
   }
 
   render() {
-    return React.createElement(TrackList, {
-      tracks: this.state.tracks,
-      onUploadClick: this.props.onUploadClick,
-      onNameChange: this.props.onNameChange,
-      onNameFocus: this.props.onNameFocus
-    })
+    if (this.state.settings)
+      return React.createElement(Settings, {
+        providers: [strava]
+      })
+    else
+      return React.createElement(TrackList, {
+        tracks: this.state.tracks,
+        onUploadClick: this.props.onUploadClick,
+        onNameChange: this.props.onNameChange,
+        onNameFocus: this.props.onNameFocus
+      })
   }
 }
 
@@ -45,10 +56,10 @@ const index = ReactDOM.render(React.createElement(Index, {
   onNameFocus: onNameFocus
 }), document.querySelector('.content'))
 
-strava
-  .on('login', auth => storage.setAuth(auth))
-  .on('logout', () => storage.deleteAuth())
-
+document.querySelector('.navbar-settings').onclick = (event) => {
+  event.preventDefault()
+  index.toggleSettings()
+}
 garmin.on('update', renderTracks)
 storage.on('change', renderTracks)
 
