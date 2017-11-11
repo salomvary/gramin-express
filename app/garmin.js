@@ -14,14 +14,25 @@ module.exports = class Garmin extends Events {
 
   update() {
     findDevices()
+      .then(devices => this.setDevices(devices))
       .then(devices => Promise.all(devices.map(findTracks)))
       .then(deviceTracks => sortTracks(deviceTracks))
       .then(tracks => this.setTracks(tracks))
       .catch(error => console.error(error))
   }
 
+  setDevices(devices) {
+    this.devices = devices
+    return devices
+  }
+
   setTracks(tracks) {
-    this.tracks = tracks
+    // Falsey tracks means no device connected
+    // empty array means no track on the device
+    if (this.devices && this.devices.length)
+      this.tracks = tracks
+    else
+      this.tracks = null
     this.emit('update', tracks)
   }
 }
@@ -52,7 +63,7 @@ function findTracks(device) {
 
 function sortTracks(deviceTracks) {
   return deviceTracks
-    .reduce((a, b) => a.concat(b))
+    .reduce((a, b) => a.concat(b), [])
     .sort((a, b) => b.birthtime.getTime() - a.birthtime.getTime())
 }
 
