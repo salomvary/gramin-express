@@ -23,12 +23,10 @@ If you want something that simply works with your device, Gramin Express for the
 
 ## Download and install
 
-If you are interested in Windows support [buy me beers](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8A6RB264GKBBE).
-
 ### Mac OS X
 
-- [Download Gramin Express for Mac OS X](https://github.com/salomvary/gramin-express/blob/master/dist/Gramin%20Express-mac.zip?raw=true)
-- Extract the zip file (eg. double click in Finder)
+- [Download Gramin Express for Mac OS X](https://github.com/salomvary/gramin-express/releases)
+- Open the dmg file
 - Move Gramin Express to /Applications (optional)
 - Right click (or control-click) on Gramin Express
 - Click Open
@@ -38,11 +36,16 @@ The last three steps are only necessary when running Gramin Express the first ti
 
 ### Linux
 
-Gramin Express is tested on Ubuntu 15.10. It might not work on other distributions.
+Gramin Express was tested on Ubuntu 17.10. It might not work on other distributions.
 
-- [Download Gramin Express for Linux](https://github.com/salomvary/gramin-express/blob/master/dist/Gramin%20Express-linux.tar.gz?raw=true)
-- Extract the archive (eg. `tar xzvf "Gramin Express-linux.tar.gz"`)
-- The executable is `Gramin\ Express-linux-x64/Gramin\ Express`
+- Install libgconf (`apt-get install libgconf-2-4` when using Ubuntu)
+- [Download Gramin Express for Linux](https://github.com/salomvary/gramin-express/releases)
+- Extract the archive (eg. `tar xjvf gramin-express-*.tar.bz2`)
+- The executable is `gramin-express-*/gramin-express`
+
+### Windows
+
+If you are interested in Windows support [buy me beers](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8A6RB264GKBBE).
 
 ## Source code
 
