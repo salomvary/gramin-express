@@ -3,6 +3,10 @@ environment:
   nodejs_version: "6"
   GH_TOKEN:
     secure: vHHBO/deJb3qKL4jyXXGbt40d8lghvJ/WYwT4qgXKsQv6d6okaGvZYdMXVFlIHXH
+  STRAVA_CLIENT_ID:
+    secure: p4TKi7kfmUqxqAbK+49kbQ==
+  STRAVA_CLIENT_SECRET:
+    secure: X+z5qFSezxrk3rT08t1OHSdPOJ6vR3jUtJVFYeFJa9DjZshkEtUiKvYJbp+IwOJn
 
 # Install scripts. (runs after repo cloning)
 install:
@@ -17,6 +21,7 @@ test_script:
   - node --version
   - npm --version
   # build
+  - npm run config
   - npm run build
 
 # Don't actually build.

@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+
+const variables = {
+  STRAVA_CLIENT_ID: 'your_client_id',
+  STRAVA_CLIENT_SECRET: 'your_client_secret'
+}
+
+const inputFile = process.argv[2]
+const outputFile = process.argv[3]
+
+if (!outputFile || !inputFile) {
+  console.error(`Usage: ${process.argv[1]} [input file] [output file]`)
+  process.exit(1)
+}
+
+if (!fs.existsSync(inputFile)) {
+  console.error(`Input file does not exists at "${inputFile}"`)
+  process.exit(1)
+}
+
+if (fs.existsSync(outputFile)) {
+  console.error(`Output file already exists at "${outputFile}"`)
+  process.exit(1)
+}
+
+const input = fs.readFileSync(inputFile).toString()
+
+const output = Object.keys(variables).reduce((input, key) => {
+  const value = process.env[key]
+  const placeholder = variables[key]
+  if (value) {
+    return input.replace(placeholder, value)
+  } else {
+    console.error(`Environment variable ${key} is not set`)
+    process.exit(1)
+  }
+}, input)
+
+fs.writeFileSync(outputFile, output)
