@@ -1,3 +1,8 @@
+## Build status
+
+[![Build Status](https://travis-ci.org/salomvary/gramin-express.svg?branch=master)](https://travis-ci.org/salomvary/gramin-express)
+[![Build status](https://ci.appveyor.com/api/projects/status/5pb49mjp8jhh48oq?svg=true)](https://ci.appveyor.com/project/salomvary/gramin-express)
+
 ## Making a release
 
 - Run `npm version patch` (or `minor` or `major`)
