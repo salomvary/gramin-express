@@ -29,7 +29,10 @@
     "appId": "com.gramin.express",
     "extraResources": [
       "Credits.rtf"
-    ]
+    ],
+    "linux": {
+      "target": "tar.bz2"
+    }
   },
   "dependencies": {
     "moment": "^2.12.0",
