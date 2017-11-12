@@ -3,6 +3,7 @@
 const { basename, extname } = require('path')
 const config = require('./config')
 const Garmin = require('./garmin')
+const Openstreetmap = require('./openstreetmap')
 const Storage = require('./storage')
 const React = require('react')
 const ReactDOM = require('react-dom')
@@ -16,6 +17,11 @@ const clientSecret = config.clientSecret
 
 const storage = new Storage()
 const strava = new Strava(clientId, clientSecret, storage.getAuth())
+const openstreetmap = new Openstreetmap(
+  config.openstreetmap.consumerKey,
+  config.openstreetmap.consumerSecret,
+  storage.getAuth('openstreetmap')
+)
 const garmin = new Garmin()
 
 garmin.startWatching()
