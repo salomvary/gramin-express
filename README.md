@@ -9,6 +9,7 @@ problems:
 - Neither of those but you have a "non-sport" device, eg. an Oregon which is
   often used by mountain bikers. However these devices do not seem to have
   support for automatic upload to Garmin Connect<sup>*</sup>
+- You are using Linux, a platform completely ignored by Garmin
 
 <sup>*</sup> Even Garmin is confused whether these devices are suported or not, see [here](https://connect.garmin.com/api/content/page/help/start/devices.faces?actionMethod=api%2Fcontent%2Fpage%2Fhelp%2Fstart%2Fdevices.xhtml%3AuserSwitcher.switchSystem&cid=663158) and [here](https://connect.garmin.com/api/content/page/help/faq.faces?cid=507967#gettingStarted).
 
