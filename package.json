@@ -21,7 +21,7 @@
     "pack": "build --dir",
     "dist": "build",
     "build": "build",
-    "config": "bin/generate-config app/config-example.js app/config.js",
+    "config": "./bin/generate-config app/config-example.js app/config.js",
     "prebuild": "gulp icons",
     "postinstall": "install-app-deps"
   },
