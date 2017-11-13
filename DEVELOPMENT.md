@@ -12,3 +12,4 @@
 - Add release notes and publish release
 - Run `npm version prerelease`
 - Run `git push origin master --tags`
+- Update the website with `git checkout gh-pages && make update-readme update-and-push && git checkout master`
