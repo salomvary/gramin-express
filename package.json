@@ -41,7 +41,7 @@
     "request": "^2.69.0"
   },
   "devDependencies": {
-    "electron-builder": "19.45.4",
+    "electron-builder": "20.2.0",
     "electron-prebuilt": "^0.37.2",
     "eslint": "^2.2.0",
     "gulp": "^3.9.1",
