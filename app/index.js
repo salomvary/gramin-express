@@ -44,7 +44,7 @@ class Index extends React.Component {
   render() {
     if (this.state.settings)
       return React.createElement(Settings, {
-        providers: [strava]
+        providers: [strava, openstreetmap]
       })
     else
       return React.createElement(TrackList, {

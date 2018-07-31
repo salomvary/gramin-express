@@ -1,8 +1,11 @@
 'use strict'
 
 const BrowserWindow = require('electron').remote.BrowserWindow
+const Url = require('url')
 
 module.exports = function callbackWindow(url) {
+  console.log('Opening window with url=' + url)
+
   let window = new BrowserWindow({
     width: 500,
     height: 700,
@@ -17,11 +20,12 @@ module.exports = function callbackWindow(url) {
 
   const promise = new Promise((resolve, reject) => {
     function onRedirect(event, _, newURL) {
-      const callback = url.parse(newURL)
+      const callback = Url.parse(newURL)
       const host = callback.host
       const pathname = callback.pathname
 
       if (host == 'localhost' && pathname == '/callback') {
+        console.log('Redirected to callback query=' + callback.query)
         event.preventDefault()
         // "Close event will also not be emitted for this window, but it
         // guarantees the closed event will be emitted."

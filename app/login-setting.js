@@ -41,8 +41,7 @@ function updateState() {
 
 function getState(auth) {
   if (auth) {
-    const userName = auth.athlete.firstname + ' ' +
-      auth.athlete.lastname
+    const userName = auth.userName
     return {
       isLoggedIn: true,
       userName

@@ -2,28 +2,19 @@
 
 const Events = require('events')
 
-module.exports = class Provider extends Events {
-  constructor({auth}) {
+module.exports = class OAuthApi extends Events {
+  constructor(authorizer, auth) {
     super()
+    this.authorizer = authorizer
     this.auth = auth
   }
 
-  uploadTrack(track) {
-    return this.login()
-      .then(() => this.sendFile(track))
-  }
-
-  setAuth(auth) {
-    this.auth = auth
-    if (auth)
-      this.emit('login', auth)
-    else
-      this.emit('logout', auth)
-    return auth
+  req(options) {
+    return this.login().then(req => req(options))
   }
 
   login() {
-    if (!this.auth)
+    if (!this.token || !this.tokenSecret)
       return this.authorizer
         .authorize()
         .then(auth => this.setAuth(auth))
@@ -38,5 +29,15 @@ module.exports = class Provider extends Events {
         .then(() => this.setAuth(null))
     else
       return Promise.resolve(null)
+  }
+
+  /** @private */
+  setAuth(auth) {
+    this.auth = auth
+    if (auth)
+      this.emit('login', auth)
+    else
+      this.emit('logout', auth)
+    return auth
   }
 }
