@@ -112,7 +112,7 @@ function retry(fn, count, isRetriable) {
     if (count > 0 && isRetriable(e))
       return sleep(100, () => retry(fn, count - 1, isRetriable))
     else
-      return e
+      return Promise.reject(e)
   })
 }
 
