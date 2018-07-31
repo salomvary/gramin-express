@@ -126,7 +126,7 @@ function sleep(time, fn) {
 
 function retryReaddir(path) {
   // For some reason permissions are not set up right after a device is connected
-  return retry(() => readdir(path), 10, e => e.code == 'EACCES')
+  return retry(() => readdir(path), 50, e => e.code == 'EACCES')
 }
 
 function getVolumes() {
