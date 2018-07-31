@@ -76,19 +76,20 @@ function isGarmin(device) {
 
 function containsChild(parent, child) {
   return stat(parent)
+    .then(stat => { console.log('isDirectory', parent, stat.isDirectory()); return stat })
     .then(stat => stat.isDirectory() && retryReaddir(parent))
-    .then(entries => entries && entries.some(entry => path.basename(entry) == child))
+    .then(entries => {
+      console.log('Entries for', parent, entries)
+      return entries && entries.some(entry => path.basename(entry) == child)
+    })
+    .then(val => {console.log('containsChild', parent, child, val); return val})
 }
 
 function readdir(dir) {
   return new Promise((resolve, reject) => {
     fs.readdir(dir, (err, result) => {
       if (err)
-        if (err.code == 'EACCES')
-          // If we don't have permissions to access dir pretend it was empty
-          resolve([])
-        else
-          reject(err)
+        reject(err)
       else
         resolve(result.map(entry => path.join(dir, entry)))
     })
