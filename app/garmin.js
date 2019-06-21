@@ -77,14 +77,11 @@ function isGarmin(device) {
 function containsChild(parent, child) {
   return stat(parent)
     .then(stat => {
-      console.log('isDirectory', parent, stat.isDirectory())
       if (stat.isDirectory()) {
         return retryReaddir(parent)
           .then(entries => {
-            console.log('Entries for', parent, entries)
             return entries && entries.some(entry => path.basename(entry) == child)
           })
-          .then(val => {console.log('containsChild', parent, child, val); return val})
       } else {
         return false
       }
