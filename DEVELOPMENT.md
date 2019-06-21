@@ -1,3 +1,8 @@
+## Requirements
+
+Node.js 8.x. Older versions might work, newer versions are known to have problems running the
+Gulp tasks.
+
 ## Build status
 
 [![Build Status](https://travis-ci.org/salomvary/gramin-express.svg?branch=master)](https://travis-ci.org/salomvary/gramin-express)
