@@ -76,13 +76,25 @@ function isGarmin(device) {
 
 function containsChild(parent, child) {
   return stat(parent)
-    .then(stat => { console.log('isDirectory', parent, stat.isDirectory()); return stat })
-    .then(stat => stat.isDirectory() && retryReaddir(parent))
-    .then(entries => {
-      console.log('Entries for', parent, entries)
-      return entries && entries.some(entry => path.basename(entry) == child)
+    .then(stat => {
+      console.log('isDirectory', parent, stat.isDirectory())
+      if (stat.isDirectory()) {
+        return retryReaddir(parent)
+          .then(entries => {
+            console.log('Entries for', parent, entries)
+            return entries && entries.some(entry => path.basename(entry) == child)
+          })
+          .then(val => {console.log('containsChild', parent, child, val); return val})
+      } else {
+        return false
+      }
     })
-    .then(val => {console.log('containsChild', parent, child, val); return val})
+    .catch(e => {
+      // Ignore volumes we don't have access to. This is the case for hidden
+      // TimeMachine mounts on macOS.
+      if (e.code == 'EACCES') return false
+      throw e
+    })
 }
 
 function readdir(dir) {
