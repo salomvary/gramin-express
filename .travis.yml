@@ -2,7 +2,7 @@ os:
 - osx
 language: node_js
 node_js:
-- node
+- lts/*
 script:
 - npm run config
 - npm run build -- --mac --linux
